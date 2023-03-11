@@ -5,17 +5,8 @@ from calculator_1 import add, sub, mul, div
 
 def basic_operation():
     n = len(argv)
-    if n == 1:
-        print("{} argument.".format(0))
-        exit(1)
-    elif n == 2:
-        print("{}".format(argv[1]))
-        exit(1)
-    elif n == 3:
-        print("{} {} few argument".format(argv[1], argv[2]))
-        exit(1)
-    elif n - 1 != 3:
-        print("Usage: {} {} {} {}".format(argv[0], argv[1], argv[2], argv[3]))
+    if n - 1 != 3:
+        print("Usage: {} <a> <operator> <b>".format(argv[0]))
         exit(1)
     a = int(argv[1])
     b = int(argv[3])
