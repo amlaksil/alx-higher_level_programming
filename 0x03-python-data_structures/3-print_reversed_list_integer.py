@@ -2,10 +2,9 @@
 
 
 def print_reversed_list_integer(my_list=[]):
-    n = len(my_list) - 1
-    k = 0
-    if not my_list:
-        pass
-    while n >= k:
-        print("{:d}".format(my_list[n]))
-        n -= 1
+    if my_list is not None:
+        n = len(my_list) - 1
+        k = 0
+        while n >= k:
+            print("{:d}".format(my_list[n]))
+            n -= 1
