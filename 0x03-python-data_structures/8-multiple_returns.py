@@ -3,4 +3,4 @@
 
 def multiple_returns(sentence):
     n = len(sentence)
-    return (n, sentence[0] if sentence is not None else None)
+    return (n, sentence[0] if sentence != "" else None)
