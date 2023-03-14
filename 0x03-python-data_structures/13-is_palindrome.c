@@ -13,7 +13,7 @@ int is_palindrome(listint_t **head)
 	listint_t *midnode = NULL, *second_half;
 	int status;
 
-	if (current == NULL && current->next == NULL)
+	if (current == NULL || current->next == NULL)
 		return (1);
 	/*
 	 * Get the middle of the list. Move slow by 1 and  fast by 2 slow will
