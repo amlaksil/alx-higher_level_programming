@@ -5,7 +5,6 @@
 class Square:
     """square class that defines size of the square (square object)"""
 
-
     def __init__(self, size):
         """Initializing this square class
 
