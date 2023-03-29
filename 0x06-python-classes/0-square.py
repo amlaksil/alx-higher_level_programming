@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+"""Empty class"""
+
+
 class Square:
-    """Empty class Square that defines a square.
-    """
-    def __init__(self):
-        """Initialize square attributes"""
-        return None
+    """Empty class that does nothing"""
+    pass
