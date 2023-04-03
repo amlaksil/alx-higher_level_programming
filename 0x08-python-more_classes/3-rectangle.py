@@ -16,6 +16,18 @@ class Rectangle:
         self.width = width
         self.height = height
 
+    def __str__(self):
+        n = self.__width
+        m = self.__height
+
+        if n != 0 and m != 0:
+            for i in range(m):
+                if i != m - 1:
+                    print(n * "#")
+                if i == m - 1:
+                    print(n * "#", end="")
+        return f""
+
     @property
     def width(self):
         """This getter method retrieve the width of the rectangle and
@@ -63,12 +75,3 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
-
-    def __str__(self):
-        n = self.__width
-        m = self.__height
-
-        if n != 0 and m != 0:
-            for i in range(m):
-                print(n * "#")
-        return f""
