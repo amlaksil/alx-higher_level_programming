@@ -71,4 +71,4 @@ class Rectangle:
         if n != 0 and m != 0:
             for i in range(m):
                 print(n * "#")
-        return ""
+        return f""
