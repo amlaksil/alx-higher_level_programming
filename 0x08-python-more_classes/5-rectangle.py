@@ -83,4 +83,4 @@ class Rectangle:
         """Is a destructor method which is called as soon as all references
         of the object are deleted
         """
-        print("Byte rectangle...")
+        print("Bye rectangle...")
