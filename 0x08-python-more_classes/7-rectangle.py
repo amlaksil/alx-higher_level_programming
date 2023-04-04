@@ -30,13 +30,15 @@ class Rectangle:
         n = self.__width
         m = self.__height
         symbol = self.print_symbol
+        char = ""
 
         if n != 0 and m != 0:
             for i in range(m):
                 if i != m - 1:
-                    print("{}".format(n * symbol))
+                    char += n * str(symbol) + '\n'
                 if i == m - 1:
-                    print("{}".format(n * symbol), end="")
+                    char += n * str(symbol)
+                    return char
         return f""
 
     def __repr__(self):
