@@ -31,11 +31,6 @@ class Rectangle:
     def __repr__(self):
         return f'Rectangle({self.width}, {self.height})'
 
-    def __del__(self):
-        """Is a destructor method which is called as soon as all references
-        of the object are deleted """
-        print("Byte rectangle...")
-
     @property
     def width(self):
         """This getter method retrieve the width of the rectangle and
@@ -83,3 +78,9 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
+
+    def __del__(self):
+        """Is a destructor method which is called as soon as all references
+        of the object are deleted
+        """
+        print("Byte rectangle...")
