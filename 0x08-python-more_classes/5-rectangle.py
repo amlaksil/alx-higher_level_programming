@@ -32,8 +32,9 @@ class Rectangle:
         return f'Rectangle({self.width}, {self.height})'
 
     def __del__(self):
+        """Is a destructor method which is called as soon as all references
+        of the object are deleted """
         print("Byte rectangle...")
-        del self
 
     @property
     def width(self):
