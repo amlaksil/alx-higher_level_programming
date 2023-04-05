@@ -1,0 +1,48 @@
+"""
+This module contains test code for function
+``add_integer`` that adds two integer numbers
+
+..
+..
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(5, 23)
+	28
+
+If the number is negative
+
+..
+..
+	>>> add_integer(-4, -2)
+	-6
+
+It also works with floating-point values. It will ignore the number after
+decimal point
+
+..
+..
+	>>> add_integer(23.7, 2.3)
+	25
+
+It will raise an error if the input number is neither int nor float
+
+..
+..
+	>>> add_integer('ab', 3)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+It will return the same if b is not valid value
+
+..
+..
+	>>> add_integer(2, 'abc')
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+If no argument is given
+
+..
+..
+	>>> add_integer()
+	Traceback (most recent call last):
+	TypeError: add_integer() missing 1 required positional argument: 'a'
