@@ -4,6 +4,8 @@ function ``add_integer()`` that adds two
 numbers if the number are float or int otherwise
 it will raises an error.
 """
+
+
 def add_integer(a, b=98):
     """Adds two integer number and retuns the result
     Args:
