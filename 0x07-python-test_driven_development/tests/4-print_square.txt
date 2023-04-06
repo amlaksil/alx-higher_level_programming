@@ -1,0 +1,56 @@
+"""
+This moudle is a test file for the ``print_square()``
+function which prints a square with character `#`
+
+Numbers
+=======
+
+It only works for positive integer number
+
+..
+..
+	>>> print_square = __import__("4-print_square").print_square
+	>>> print_square(10)
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+
+..
+..
+	>>> print_square(1)
+	#
+	>>> print_square(0)
+
+Errors
+=======
+
+if size is not a number it will raise an error
+
+..
+..
+	>>> print_square('a')
+	Traceback (most recent call last):
+	TypeError: size must be an integer
+
+It will also raise an error if size is less than zero
+
+..
+..
+	>>> print_square(-8)
+	Traceback (most recent call last):
+	ValueError: size must be >= 0
+
+If no argument is passed
+
+..
+..
+	>>> print_square()
+	Traceback (most recent call last):
+	TypeError: print_square() missing 1 required positional argument: 'size'
