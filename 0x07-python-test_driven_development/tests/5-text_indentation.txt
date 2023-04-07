@@ -47,6 +47,9 @@ Passing empty string
 	>>> text_indentation("")
 	>>>
 
+..
+..
+
 	>>> text_indentation("Silamlak.Desye:Lamlak?Engineer")
 	Silamlak.
 	<BLANKLINE>
@@ -67,6 +70,13 @@ Passing empty string
 	<BLANKLINE>
 	John
 
+..
+..
+
+passing a new line as a text
+
+	>>> text_indentation('\n')
+	<BLANKLINE>
 
 Error
 ======
