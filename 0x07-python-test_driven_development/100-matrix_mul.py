@@ -30,15 +30,18 @@ def matrix_mul(m_a, m_b):
         raise ValueError("m_b can't be empty")
     if all(type(elem) is list for elem in m_a) is False:
         raise TypeError("m_a must be a list of lists")
-    if all(type(elem) is list for elem in m_a) is False:
+    if all(type(var) is list for var in m_b) is False:
         raise TypeError("m_b must be a list of lists")
-    if len(m_a[0]) != len(m_b):
-        raise ValueError("m_a and m_b can't be multiplied")
     for i in range(len(m_b)):
         if len(m_b[0]) != len(m_b[i]):
             raise TypeError("each row of m_b must be of the same size")
+    for k in range(len(m_a)):
+        if len(m_a[0]) != len(m_a[k]):
+            raise TypeError("each row of m_a must be of the same size")
 
-    m = len(m_a[0])
+    if len(m_a[0]) != len(m_b):
+        raise ValueError("m_a and m_b can't be multiplied")
+
     tmp = []
     mul_list = []
     trans = [[m_b[j][k] for j in range(len(m_b))]for k in range(len(m_b[0]))]
@@ -57,6 +60,4 @@ def matrix_mul(m_a, m_b):
             tmp.append(sum)
         mul_list.append(tmp)
         tmp = []
-        if len(m_a[a]) != m:
-            raise TypeError("each row of m_a must be of the same size")
     return mul_list
