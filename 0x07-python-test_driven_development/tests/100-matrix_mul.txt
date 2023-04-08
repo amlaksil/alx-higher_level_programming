@@ -48,6 +48,20 @@ Errors will raise if the argument passed is not a list
 	Traceback (most recent call last):
 	TypeError: m_a must be a list
 
+String and list of list of numbers
+
+..
+..
+	>>> matrix_mul("silamlak", [[7, 10], [3, 5]])
+	Traceback (most recent call last):
+	TypeError: m_a must be a list
+
+..
+..
+	>>> matrix_mul([[7, 10], [3, 5]], "amlaksil")
+	Traceback (most recent call last):
+	TypeError: m_b must be a list
+
 Pass list which is not list of lists
 
 ..
