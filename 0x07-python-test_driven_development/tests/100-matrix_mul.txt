@@ -70,6 +70,12 @@ Pass list which is not list of lists
 	Traceback (most recent call last):
 	TypeError: m_a must be a list of lists
 
+..
+..
+	>>> matrix_mul([[7, 10], [15, 22]], [8, 3, 1])
+	Traceback (most recent call last):
+	TypeError: m_b must be a list of lists
+
 Pass empty argument for the first matrix
 
 ..
