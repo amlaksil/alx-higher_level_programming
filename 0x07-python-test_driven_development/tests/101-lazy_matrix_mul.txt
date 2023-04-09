@@ -40,17 +40,10 @@ It will also works for float number
 	array([[ 58.46, 100.57],
 	       [124.38, 184.65]])
 
-
-Error
-======
-
-Errors will raise if the argument passed is not a list
-
 ..
 ..
 	>>> lazy_matrix_mul(123, 23)
-	Traceback (most recent call last):
-	TypeError: m_a must be a list
+	2829
 
 String and list of list of numbers
 
@@ -58,27 +51,26 @@ String and list of list of numbers
 ..
 	>>> lazy_matrix_mul("silamlak", [[7, 10], [3, 5]])
 	Traceback (most recent call last):
-	TypeError: m_a must be a list
+	TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U8') dtype('<U8') dtype('<U8')
 
 ..
 ..
 	>>> lazy_matrix_mul([[7, 10], [3, 5]], "amlaksil")
 	Traceback (most recent call last):
-	TypeError: m_b must be a list
+	TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U8') dtype('<U8') dtype('<U8')
 
 Pass list which is not list of lists
 
 ..
 ..
 	>>> lazy_matrix_mul([2, 4, 5], [8, 3, 1])
-	Traceback (most recent call last):
-	TypeError: m_a must be a list of lists
+	33
 
 ..
 ..
 	>>> lazy_matrix_mul([[7, 10], [15, 22]], [8, 3, 1])
 	Traceback (most recent call last):
-	TypeError: m_b must be a list of lists
+	ValueError: shapes (2,2) and (3,) not aligned: 2 (dim 1) != 3 (dim 0)
 
 Pass empty argument for the first matrix
 
@@ -86,7 +78,7 @@ Pass empty argument for the first matrix
 ..
 	>>> lazy_matrix_mul([[]], [[23, 56, 1, 44], [89, 23, 1, 34]])
 	Traceback (most recent call last):
-	ValueError: m_a can't be empty
+	ValueError: shapes (1,0) and (2,4) not aligned: 0 (dim 1) != 2 (dim 0)
 
 Pass empty argument for the second matrix
 
@@ -94,7 +86,7 @@ Pass empty argument for the second matrix
 ..
 	>>> lazy_matrix_mul([[23, 56, 1, 44], [89, 23, 1, 34]], [[]])
 	Traceback (most recent call last):
-	ValueError: m_b can't be empty
+	ValueError: shapes (2,4) and (1,0) not aligned: 4 (dim 1) != 1 (dim 0)
 
 If the number of columns of the first matrix is not equal to the number of rows
 of the second matrix they can't be multiplied
@@ -103,7 +95,7 @@ of the second matrix they can't be multiplied
 ..
 	>>> lazy_matrix_mul([[1, 2, 5], [3, 4, 12]], [[1, 2], [3, 4]])
 	Traceback (most recent call last):
-	ValueError: m_a and m_b can't be multiplied
+	ValueError: shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
 
 None float and integer input
 
@@ -111,11 +103,11 @@ None float and integer input
 ..
 	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 34, 0], [3, 4, 12, 'sil']])
 	Traceback (most recent call last):
-	TypeError: m_b should contain only integers or floats
+	ValueError: data type must provide an itemsize
 
 	>>> lazy_matrix_mul([[1, 2], ['sil', 4]], [[1, 2, 34, 0], [3, 4, 12, 2]])
 	Traceback (most recent call last):
-	TypeError: m_a should contain only integers or floats
+	ValueError: data type must provide an itemsize
 
 If the list of lists are not rectangle
 
@@ -123,11 +115,11 @@ If the list of lists are not rectangle
 ..
 	>>> lazy_matrix_mul([[1, 2], [4, 4, 34, 12]], [[1, 2, 34, 0], [3, 4, 12, 2]])
 	Traceback (most recent call last):
-	TypeError: each row of m_a must be of the same size
+	ValueError: setting an array element with a sequence.
 
 	>>> lazy_matrix_mul([[1, 2], [4, 4]], [[1, 2, 34, 0, 123], [3, 4, 12, 2]])
 	Traceback (most recent call last):
-	TypeError: each row of m_b must be of the same size
+	ValueError: setting an array element with a sequence.
 
 ..
 ..
