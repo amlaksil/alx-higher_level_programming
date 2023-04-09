@@ -19,16 +19,10 @@ def text_indentation(text):
     if isinstance(text, str) is False:
         raise TypeError("text must be a string")
     for char in text:
-        if char == "." or char == "?":
+        if char == "." or char == "?" or char == ":":
             print(char)
             print()
             i = 0
             continue
-        if char == ":":
-            print(char)
-            i = 0
-            print()
-            continue
-
         print("{}".format(char if i != 0 else char.strip()), end='')
         i = 1
