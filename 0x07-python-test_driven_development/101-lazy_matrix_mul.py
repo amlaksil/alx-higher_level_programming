@@ -21,4 +21,4 @@ def lazy_matrix_mul(m_a, m_b):
                     first matrix is not equal to the number of rows of the
                     second matrix meaning they can't be multiplied
     """
-    return (np.dot(m_a, m_b))
+    return (np.matmul(m_a, m_b))

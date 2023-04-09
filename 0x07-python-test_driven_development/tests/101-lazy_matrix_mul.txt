@@ -43,7 +43,8 @@ It will also works for float number
 ..
 ..
 	>>> lazy_matrix_mul(123, 23)
-	2829
+	Traceback (most recent call last):
+	ValueError: Scalar operands are not allowed, use '*' instead
 
 String and list of list of numbers
 
@@ -51,13 +52,13 @@ String and list of list of numbers
 ..
 	>>> lazy_matrix_mul("silamlak", [[7, 10], [3, 5]])
 	Traceback (most recent call last):
-	TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U8') dtype('<U8') dtype('<U8')
+	ValueError: Scalar operands are not allowed, use '*' instead
 
 ..
 ..
 	>>> lazy_matrix_mul([[7, 10], [3, 5]], "amlaksil")
 	Traceback (most recent call last):
-	TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U8') dtype('<U8') dtype('<U8')
+	ValueError: Scalar operands are not allowed, use '*' instead
 
 Pass list which is not list of lists
 
@@ -103,11 +104,11 @@ None float and integer input
 ..
 	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 34, 0], [3, 4, 12, 'sil']])
 	Traceback (most recent call last):
-	ValueError: data type must provide an itemsize
+	TypeError: invalid data type for einsum
 
 	>>> lazy_matrix_mul([[1, 2], ['sil', 4]], [[1, 2, 34, 0], [3, 4, 12, 2]])
 	Traceback (most recent call last):
-	ValueError: data type must provide an itemsize
+	TypeError: invalid data type for einsum
 
 If the list of lists are not rectangle
 
