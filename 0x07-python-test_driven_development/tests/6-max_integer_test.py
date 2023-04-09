@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""Unittest for max_integer({..])
+"""Unittest for max_integer([..])
 """
 import unittest
-max_integer = __import__("6-max_integer").max_integer
+max_integer = __import__('6-max_integer').max_integer
 
 
 class TestMaxInteger(unittest.TestCase):
@@ -23,7 +23,7 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_max_all_negative_element(self):
         self.assertEqual(max_integer([-27, -30, -5, -4]), -4)
-        self.assertEqual(max_integer([-5, -30, -35, 0]), -5)
+        self.assertEqual(max_integer([-5, -30, -35, 0]), 0)
 
     def test_max_all_same_element(self):
         self.assertEqual(max_integer([0, 0, 0, 0]), 0)
@@ -36,7 +36,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertRaises(TypeError, max_integer, True)
 
     def test_types_string(self):
-        self.assertRaises(TypeError, max_integer, "abc")
+        self.assertRaises(TypeError, max_integer, [0, '2'])
 
     def test_types_number(self):
         self.assertRaises(TypeError, max_integer, 123)
