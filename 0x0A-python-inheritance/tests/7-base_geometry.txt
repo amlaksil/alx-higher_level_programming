@@ -1,0 +1,104 @@
+"""
+7-base_geometry.py
+==================
+
+This module contains all possible test conditions
+for `BaseGeometry` class
+
+..
+..
+	>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+	>>> bg = BaseGeometry()
+
+Test area method
+
+..
+..
+
+	>>> bg.area()
+	Traceback (most recent call last):
+	Exception: area() is not implemented
+
+Pass a valid argument to integer_validator
+
+..
+..
+	>>> bg.integer_validator("Silamlak", 12)
+	>>> bg.integer_validator("amlaksil", 89)
+
+If the value passed is not an integer it will raise an error
+
+..
+..
+	>>> bg.integer_validator("sum", "grade")
+	Traceback (most recent call last):
+	TypeError: sum must be an integer
+
+	>>> bg.integer_validator("amlaksil", "amlaksil")
+	Traceback (most recent call last):
+	TypeError: amlaksil must be an integer
+
+Pass an integer <= 0
+
+..
+..
+	>>> bg.integer_validator("score", -3)
+	Traceback (most recent call last):
+	ValueError: score must be greater than 0
+
+..
+..
+	>>> bg.integer_validator("point", 0)
+	Traceback (most recent call last):
+	ValueError: point must be greater than 0
+
+..
+..
+	>>> bg.integer_validator("point", 2.5)
+	Traceback (most recent call last):
+	TypeError: point must be an integer
+
+Passing only one argument
+
+..
+..
+
+	>>> bg.integer_validator("silamlak")
+	Traceback (most recent call last):
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Passing a list, tuple and bool
+
+..
+..
+
+	>>> bg.integer_validator("age", [3])
+	Traceback (most recent call last):
+	TypeError: age must be an integer
+
+..
+..
+
+	>>> bg.integer_validator("age", (4, 2))
+	Traceback (most recent call last):
+	TypeError: age must be an integer
+
+..
+..
+
+	>>> bg.integer_validator("age", True)
+	Traceback (most recent call last):
+	TypeError: age must be an integer
+
+..
+..
+	>>> bg.integer_validator("age", None)
+	Traceback (most recent call last):
+	TypeError: age must be an integer
+
+..
+..
+
+	>>> bg.integer_validator("age", {3, 4})
+	Traceback (most recent call last):
+	TypeError: age must be an integer
