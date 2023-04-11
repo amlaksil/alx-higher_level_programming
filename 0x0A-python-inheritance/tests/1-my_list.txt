@@ -1,0 +1,56 @@
+'''
+1-my_list
+=========
+
+This module contains test different test
+condition for class callled `MyList`
+
+..
+..
+	>>> MyList = __import__('1-my_list').MyList
+	>>> my_list = MyList()
+	>>> my_list.append(1)
+	>>> my_list.append(4)
+	>>> my_list.append(2)
+	>>> my_list.append(3)
+	>>> my_list.append(5)
+	>>> print(my_list)
+	[1, 4, 2, 3, 5]
+	>>> my_list.print_sorted()
+	[1, 2, 3, 4, 5]
+	>>> print(my_list)
+	[1, 4, 2, 3, 5]
+
+..
+..
+	>>> my_list = MyList([2, 3, 4, -2, 0, -12])
+	>>> my_list.print_sorted()
+	[-12, -2, 0, 2, 3, 4]
+
+	>>> my_list = MyList()
+	>>> my_list.print_sorted()
+	[]
+
+
+Errors
+======
+
+..
+..
+	>>> my_list = MyList([2, 3, 4, -2, 0, 's'])
+	>>> my_list.print_sorted()
+	Traceback (most recent call last):
+	TypeError: '<' not supported between instances of 'str' and 'int'
+
+..
+..
+	>>> my_list_s = MyList('abc')
+	>>> my_list_s.print_sorted()
+	['a', 'b', 'c']
+
+..
+..
+
+	>>> my_list = MyList(123)
+	Traceback (most recent call last):
+	TypeError: 'int' object is not iterable
