@@ -17,12 +17,16 @@ def append_after(filename="", search_string="", new_string=""):
     position = 0
     with open(filename, 'r+', encoding="utf-8") as f:
         contents = f.readlines()
+        cpy_contents = contents.copy()
         for line in contents:
             if search_string in line:
-                contents.insert(position + 1, new_string)
+                cpy_contents.insert(position + 1, new_string)
+                position += 1
             position += 1
+
         '''set the reference point(pointer) at the beginning of the file
-        or open a file again in write mode to trancate it  '''
+        or open a file again in write mode to trancate'''
+
         f.seek(0)
         f.truncate()  # Clear previous content
-        f.writelines(contents)
+        f.writelines(cpy_contents)
