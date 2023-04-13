@@ -13,6 +13,6 @@ def add_attribute(self, name, value):
         value (str): value to name
     """
     if hasattr(self, '__dict__'):
-        self.name = value
+        setattr(self, name, value)
     else:
         raise TypeError("can't add new attribute")
