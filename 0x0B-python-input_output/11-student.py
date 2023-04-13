@@ -46,4 +46,5 @@ class Student:
         Args:
             json (JSON): dictionary
         """
-        self.__dict__ = json
+        for attr in json:
+            self.__dict__[attr] = json[attr]
