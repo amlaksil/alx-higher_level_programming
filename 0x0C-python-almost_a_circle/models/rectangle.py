@@ -27,6 +27,7 @@ class Rectangle(Base):
         self.y = y
 
     def __str__(self):
+        """Returns formated string representation of an object """
         str1 = "[Rectangle] ({}) {}/{}".format(self.id, self.__x, self.__y)
         str2 = " - {}/{}".format(self.__width, self.__height)
 
