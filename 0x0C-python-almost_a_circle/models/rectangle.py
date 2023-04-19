@@ -2,7 +2,6 @@
 """This module contains a `Rectangle` class which is
 sub class of `Base` class
 """
-import ast
 from .base import Base
 
 
@@ -50,7 +49,7 @@ class Rectangle(Base):
         if type(value) is not int:
             raise TypeError(f"{'width'} must be an integer")
         if value <= 0:
-            raise ValueError(f"{'height'} must be > 0")
+            raise ValueError(f"{'width'} must be > 0")
         self.__width = value
 
     @property
@@ -173,9 +172,8 @@ class Rectangle(Base):
         """Returns the dictionary representation of a Rectangle
         the dicionary must contain id, width, height, x and y parametrs
         """
-        dict1 = "{}'{}': {}, ".format('{', 'x', self.__x)
-        dict2 = "'{}': {}, '{}': {}, ".format('y', self.__y, 'id', self.id)
-        dict3 = "'{}': {}, '{}': ".format('height', self.__height, 'width')
-        dict4 = "{}{}".format(self.__width, '}')
+        h = self.__height
+        w = self.__width
+        dict_ = {"x": self.__x, "y": self.__y, "height": h, "width": w}
 
-        return ast.literal_eval(dict1 + dict2 + dict3 + dict4)
+        return dict_
