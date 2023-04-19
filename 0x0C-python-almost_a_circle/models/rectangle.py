@@ -29,7 +29,6 @@ class Rectangle(Base):
         """Returns formated string representation of an object """
         str1 = "[Rectangle] ({}) {}/{}".format(self.id, self.__x, self.__y)
         str2 = " - {}/{}".format(self.__width, self.__height)
-
         return str1 + str2
 
     @property
@@ -175,5 +174,4 @@ class Rectangle(Base):
         h = self.__height
         w = self.__width
         dict_ = {"x": self.__x, "y": self.__y, "height": h, "width": w}
-
         return dict_
