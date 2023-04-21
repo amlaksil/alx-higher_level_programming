@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module contains a class called `Base` """
 import json
+import os
 
 
 class Base:
@@ -31,8 +32,8 @@ class Base:
             otherwise, return the JSON string representation
             of list_dictionarie
         """
-        if list_dictionaries is None:
-            return []
+        if list_dictionaries is None or len(list_dictionaries) == 0:
+            return '[]'
         return json.dumps(list_dictionaries)
 
     @classmethod
@@ -94,4 +95,14 @@ class Base:
             we have to use previously implemented methods which are
             from_json_string and create
         """
-        pass
+        filename = "{}.json".format(cls.__name__)
+        if os.path.isfile(filename) is not True:
+            return []
+
+        with open(filename, encoding="utf-8") as f:
+            contents = f.read()
+            json_list = cls.from_json_string(contents)
+            list_instances = []
+            for i in range(len(json_list)):
+                list_instances.append(cls.create(**json_list[i]))
+        return list_instances

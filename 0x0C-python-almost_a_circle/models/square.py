@@ -2,7 +2,6 @@
 """This module consists of a class called
 `Square` which is a subclass of `Rectangle` class
 """
-import ast
 from .rectangle import Rectangle
 
 
@@ -79,8 +78,6 @@ class Square(Rectangle):
         """Returns the dictionary representation of a Square.
         This dictionary contains id, size, x, and y
         """
-        dict1 = "{}'{}': {}, '{}': ".format('{', 'id', self.id, 'x')
-        dict2 = "{}, ".format(self.x)
-        dict3 = "'{}': {}, '{}': {}".format('size', self.size, 'y', self.y)
+        dict_ = {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}
 
-        return ast.literal_eval(dict1 + dict2 + dict3 + '}')
+        return dict_

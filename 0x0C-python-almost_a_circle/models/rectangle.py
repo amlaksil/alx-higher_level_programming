@@ -119,7 +119,7 @@ class Rectangle(Base):
         """Prints rectangle to stdout"""
         w = self.__width
         h = self.__height
-        for l in range(self.__y):
+        for line in range(self.__y):
             print()
         for i in range(h):
             print("{}{}".format(self.__x * " ", w * '#'))
