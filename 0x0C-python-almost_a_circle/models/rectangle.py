@@ -173,5 +173,6 @@ class Rectangle(Base):
         """
         h = self.__height
         w = self.__width
-        dict_ = {"x": self.__x, "y": self.__y, "height": h, "width": w}
+        i = self.id
+        dict_ = {"x": self.__x, "y": self.__y, "id": i, "height": h, "width": w}
         return dict_

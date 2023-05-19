@@ -22,8 +22,7 @@ class TestSquareClass(unittest.TestCase):
 
     def test_subclass(self):
         """Check Rectangle class is a subclass of Base class """
-        #self.assertEqual(True, issubclass(Square, Rectangle))
-        pass
+        self.assertEqual(True, issubclass(Square, Rectangle))
 
     def test_square_parameters(self):
         """Make sure all square parameter is accessable """
@@ -65,10 +64,16 @@ class TestSquareClass(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s1 = Square(0)
 
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            s1 = Square(-1)
+
     def test_is_x_greater_than_orEqualto_zero(self):
         """Make sure error is raised if x is not less than or equal to zero"""
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             s1 = Square(5, -2, 4)
+
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            s1 = Square(1, -2)
 
     def test_is_y_greater_than_orEqualto_zero(self):
         """Make sure error is raised if y is not less than or equal to zero """

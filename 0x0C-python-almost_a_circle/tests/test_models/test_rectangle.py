@@ -87,22 +87,34 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r = Rectangle(-3, 2, 4, 7)
 
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(0, 2)
+
     def test_is_height_positive(self):
         """Make sure error is raised if width is less than zero """
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             r = Rectangle(3, -2, 4, 7, 21)
 
-    def test_is_x_greater_than_orEqualto_zero(self):
-        """Make sure error is raised if x is not less than or equal to zero"""
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, 0)
+
+    def test_is_x_greater_than_zero(self):
+        """Make sure error is raised if x is not >= 0"""
 
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             r = Rectangle(3, 2, -2, 7, 21)
 
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r = Rectangle(1, 2, -3)
+
     def test_is_y_greater_than_orEqualto_zero(self):
-        """Make sure error is raised if y is not less than or equal to zero """
+        """Make sure error is raised if y is not >= 0"""
 
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             r = Rectangle(3, 2, 4, -7, 5)
+
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r = Rectangle(1, 2, 3, -4)
 
     def test_rectangle_area(self):
         """Area of rectangle """
@@ -212,9 +224,9 @@ class TestRectangleClass(unittest.TestCase):
             self.assertEqual(out.getvalue(), "[Rectangle] (89) 1/3 - 4/2\n")
 
     def test_to_dictionary(self):
-        """Check the representation is inteded dictionary """
+        """Check dictionary """
         r1 = Rectangle(10, 2, 1, 9)
-        dic_rep = "{'x': 1, 'y': 9, 'height': 2, 'width': 10}\n"
+        dic_rep = "{'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}\n"
         with patch('sys.stdout', new=StringIO()) as out:
             dict_ = r1.to_dictionary()
             print(dict_)

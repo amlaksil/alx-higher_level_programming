@@ -72,6 +72,8 @@ class Square:
         if n == 0:
             print()
         else:
+            if py > 0:
+                print()
             for i in range(1, n + 1):
                 if not (py > 0):
                     print(py * " ", end="")
