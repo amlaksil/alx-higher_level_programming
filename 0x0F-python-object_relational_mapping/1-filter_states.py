@@ -21,7 +21,7 @@ def get_all_states_start_name_with_N(username, password, db_name):
             host='localhost', user=username, passwd=password,
             db=db_name, port=3306)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%'")
     rows = cur.fetchall()
     for row in rows:
         print(row)
