@@ -21,7 +21,8 @@ def get_the_row_matches_given_name(username, password, db_name, searched):
             host='localhost', user=username, passwd=password,
             db=db_name, port=3306)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s", (searched,))
+    query = "SELECT * FROM states WHERE name = '{}'".format(searched)
+    cur.execute(query)
     rows = cur.fetchall()
     for row in rows:
         print(row)
