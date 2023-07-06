@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 This module consist of a function called 'find_peak' which finds
 the first peak element (is an element that is strictly greater that
