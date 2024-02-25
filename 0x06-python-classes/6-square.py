@@ -17,8 +17,9 @@ class Square:
             TypeError: if size is not integer
             ValueError: if size is less than zero
         """
-        self.__size = size
-        self.__position = position
+        # Use property setter to invoke validation
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -66,14 +67,15 @@ class Square:
         """If size is not zero it prints n by n (n x n) '#' table
         otherwise it prints empty line
         """
-        size = self.__size
+        size = self.size
+        position = self.position
         if size == 0:
             print()
         else:
-            if self.__position[1] > 0:
-                print('\n' * self.__position[1], end="")
+            if position[1] > 0:
+                print('\n' * position[1], end="")
             for i in range(1, size + 1):
-                if not (self.__position[1] > 0):
-                    print(self.__position[1] * " ", end="")
-                print(self.__position[0] * " ", end="")
+                if not (position[1] > 0):
+                    print(position[1] * " ", end="")
+                print(position[0] * " ", end="")
                 print(size * "#")
