@@ -18,7 +18,7 @@ class Square:
             ValueError: if size is less than zero
         """
         self.__size = size
-        self.position = position
+        self.__position = position
 
     @property
     def size(self):
@@ -66,17 +66,14 @@ class Square:
         """If size is not zero it prints n by n (n x n) '#' table
         otherwise it prints empty line
         """
-        n = int(self.__size)
-        py = int(self.__position[1])
-        px = int(self.__position[0])
-        if n == 0:
+        size = self.__size
+        if size == 0:
             print()
         else:
-            if py > 0:
-                print()
-            for i in range(1, n + 1):
-                if not (py > 0):
-                    print(py * " ", end="")
-                if px > 0:
-                    print(px * " ", end="")
-                print(n * "#")
+            if self.__position[1] > 0:
+                print('\n' * self.__position[1], end="")
+            for i in range(1, size + 1):
+                if not (self.__position[1] > 0):
+                    print(self.__position[1] * " ", end="")
+                print(self.__position[0] * " ", end="")
+                print(size * "#")
