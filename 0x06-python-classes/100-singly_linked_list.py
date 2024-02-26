@@ -3,7 +3,12 @@
 
 
 class Node:
-    """Node class that defines singly linked list"""
+    """Node class that defines singly linked list.
+
+    Attributes:
+        data: The data stored in the node.
+        next_node: A reference to the next node in the linked list.
+    """
     def __init__(self, data, next_node=None):
         """Initializing the node """
         self.data = data
@@ -29,43 +34,67 @@ class Node:
     def next_node(self, value):
         if not isinstance(value, Node) and value is not None:
             raise TypeError("next_node must be a Node object")
-        sel.__next_node = value
+        self.__next_node = value
 
 
 """singly linked list module """
 
 
 class SinglyLinkedList:
-    """defines singly linked list """
-    def __str__(self):
-        """Initializing singly linked list """
-        rtn = ""
-        ptr = self.__head
-
-        while prt is not None:
-            rtn += str(ptr.data)
-            if prt.next_node is not None:
-                rtn += "\n"
-            ptr = ptr.next_node
-
-            return rtn
-
+    """Defines singly linked list.
+    Attributes:
+        __head: The head node of the linked list.
+    """
     def __init__(self):
-        """Initialize the node """
+        """Initializes the linked list."""
         self.__head = None
 
+    def __str__(self):
+        """
+        Returns a sring representation of the linked list.
+
+        Returns:
+            A string representing the linked lits, with each element separated
+            by a newline character.
+        """
+        head = self.__head
+        data = []
+        while head is not None:
+            data.append(head.data)
+            head = head.next_node
+        fstr = ''
+        new_line = '\n'
+        for i in range(0, len(data)):
+            if i == len(data) - 1:
+                new_line = ''
+            fstr += f'{data[i]}{new_line}'
+        return fstr
+
     def sorted_insert(self, value):
-        """sort the list """
-        ptr = self.__head
+        """
+        Inserts a value into the linked list in a sorted manner.
+
+        Args:
+            value: The value to be inserted into the linked list.
+        """
+        new_node = Node(value)
+        ptr = prev = self.__head
+        if ptr is None:
+            self.__head = new_node
+            return
+        if new_node.data <= ptr.data:
+            new_node.next_node = ptr
+            self.__head = new_node
+            return
 
         while ptr is not None:
-            if ptr.data > value:
+            if ptr.next_node is None and new_node.data >= ptr.data:
+                ptr.next_node = new_node
                 break
-            ptr_prev = ptr
+            elif new_node.data <= ptr.data:
+                new_node.next_node = ptr
+                prev.next_node = new_node
+                break
+            prev = ptr
             ptr = ptr.next_node
-
-            newNode = Node(value, ptr)
-            if ptr == self.__head:
-                self.__head = newNode
-            else:
-                ptr_prev.next_node = newNode
+        return
