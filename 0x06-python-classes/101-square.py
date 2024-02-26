@@ -70,7 +70,7 @@ class Square:
         count_spaces = 0
         data = []
         if size == 0:
-            return '\n'
+            return ''
         else:
             if position[1] > 0:
                 for _ in range(position[1]):
