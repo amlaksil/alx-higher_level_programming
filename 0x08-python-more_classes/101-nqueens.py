@@ -64,27 +64,31 @@ def solve_nqueens(n):
         SystemExit: If `n` is less than 4 or the wrong number of arguments
     is provided.
     """
-    if len(sys.argv) != 2:
-        print(f'Usage: nqueens {n}')
-        sys.exit(1)
     try:
         n = int(sys.argv[1])
     except ValueError:
-        print(f'{n} must be a number')
+        print('N must be a number')
         sys.exit(1)
 
     if n < 4:
-        print(f'{n} must be at least 4')
+        print('N must be at least 4')
         sys.exit(1)
 
     board = [-1] * n
     solutions = []
     solve_util(board, 0, n, solutions)
     for solution in solutions:
+        list_t = []
         for i in range(n):
-            print("[{}, {}]".format(i, solution[i]), end=' ')
-        print()
+            lists = []
+            lists.append(i)
+            lists.append(solution[i])
+            list_t.append(lists)
+        print(list_t)
 
 
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print('Usage: nqueens N')
+        sys.exit(1)
     solve_nqueens(sys.argv[1])
