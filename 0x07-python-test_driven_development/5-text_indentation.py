@@ -15,14 +15,16 @@ def text_indentation(text):
     Raises:
         TypeError: if the text is not string
     """
-    i = 1
     if isinstance(text, str) is False:
         raise TypeError("text must be a string")
+
+    punctuation_marks = [".", "?", ":"]
+    init = 0
     for char in text:
-        if char == "." or char == "?" or char == ":":
-            print(char)
-            print()
-            i = 0
-            continue
-        print("{}".format(char if i != 0 else char.strip()), end='')
-        i = 1
+        if char in punctuation_marks:
+            str_t = text[init:text.index(char) + 1]
+            init = text.index(char) + 1
+            print(f"{str_t.strip()}\n")
+    if "." not in text[init:] and "?" not in text[init:] and\
+            ":" not in text[init:]:
+        print(text[init:].strip(), end="")
