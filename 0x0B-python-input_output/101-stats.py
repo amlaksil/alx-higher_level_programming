@@ -20,9 +20,15 @@ if __name__ == '__main__':
         for line in sys.stdin:
             line_count += 1
             parts = line.split()
+            if len(parts) < 7:
+                continue
             size = int(parts[-1])
-            total_size += size
             status_code = parts[-2]
+            total_size += size
+            try:
+                int(status_code)
+            except Exception as e:
+                continue
 
             status_code_counts[status_code] = status_code_counts.get(
                 status_code, 0) + 1
@@ -37,3 +43,7 @@ if __name__ == '__main__':
         for code in sorted(status_code_counts.keys()):
             if status_code_counts[code] != 0:
                 print(f'{code}: {status_code_counts[code]}')
+print(f'File size: {total_size}')
+for code in sorted(status_code_counts.keys()):
+    if status_code_counts[code] != 0:
+        print(f'{code}: {status_code_counts[code]}')
