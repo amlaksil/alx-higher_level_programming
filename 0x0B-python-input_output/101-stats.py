@@ -43,7 +43,8 @@ if __name__ == '__main__':
         for code in sorted(status_code_counts.keys()):
             if status_code_counts[code] != 0:
                 print(f'{code}: {status_code_counts[code]}')
-print(f'File size: {total_size}')
-for code in sorted(status_code_counts.keys()):
-    if status_code_counts[code] != 0:
-        print(f'{code}: {status_code_counts[code]}')
+    finally:
+        print(f'File size: {total_size}')
+        for code in sorted(status_code_counts.keys()):
+            if status_code_counts[code] != 0:
+                print(f'{code}: {status_code_counts[code]}')
