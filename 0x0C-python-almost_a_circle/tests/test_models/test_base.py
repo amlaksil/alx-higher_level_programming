@@ -102,11 +102,12 @@ class TestBaseClass(unittest.TestCase):
         
     def test_Square_save_to_file_none(self):
         """Check file"""
+        s1 = Square(10, 5)
         Square.save_to_file(None)
         
         with open("Square.json", "r") as f:
             content = f.read()
-        self.assertEqual(content, '[]')
+            self.assertEqual(content, '[]')
 
     def test_Square_save_to_file_empty(self):
         """Check file"""

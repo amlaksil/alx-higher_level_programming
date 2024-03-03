@@ -168,6 +168,15 @@ class TestSquareClass(unittest.TestCase):
         s2.update(**s1_dictionary)
         self.assertFalse(s1 == s2)
 
+    def test_Square_save_to_file_none_2(self):
+        """Check file"""
+        r1 = Square(10, 5)
+        Square.save_to_file(None)
+
+        with open("Square.json", "r") as f:
+            content = f.read()
+            self.assertEqual(content, '[]')
+            
     def test_pycodestyle(self):
         """Check PEP 8 style """
         style = pycodestyle.StyleGuide(quiet=True)
