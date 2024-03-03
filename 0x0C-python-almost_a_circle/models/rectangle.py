@@ -7,7 +7,7 @@ from .base import Base
 
 class Rectangle(Base):
     """A Rectangle class that inherits `id` from Base class and defines
-    an init constructor whih consists four private instance attributes and
+    an init constructor which consists four private instance attributes and
     one inherited attribute.
     """
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -174,5 +174,6 @@ class Rectangle(Base):
         h = self.__height
         w = self.__width
         i = self.id
-        dict_ = {"x": self.__x, "y": self.__y, "id": i, "height": h, "width": w}
+        dict_ = {
+            "x": self.__x, "y": self.__y, "id": i, "height": h, "width": w}
         return dict_
