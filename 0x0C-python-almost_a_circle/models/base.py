@@ -106,3 +106,64 @@ class Base:
             for i in range(len(json_list)):
                 list_instances.append(cls.create(**json_list[i]))
         return list_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serialize a list of objects to a CSV file.
+
+        Args:
+            list_objs (list): A list of objects to serialize.
+        """
+        filename = f"{cls.__name__}.csv"
+        with open(filename, "w", encoding="utf-8") as file:
+            if filename == "Rectangle.csv":
+                file.write("id,width,height,x,y\n")
+                for obj in list_objs:
+                    data = f"{obj.id},{obj.width},{obj.height},{obj.x}," +\
+                        f"{obj.y}\n"
+                    file.write(data)
+            else:
+                file.write("id,size,x,y\n")
+                for obj in list_objs:
+                    data = f"{obj.id},{obj.size},{obj.x},{obj.y}\n"
+                    file.write(data)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Deserialize objects from a CSV file.
+
+        Returns:
+            list: A list of deserialized objects.
+        """
+        from models.rectangle import Rectangle
+        from models.square import Square
+        filename = f"{cls.__name__}.csv"
+        objects = []
+        try:
+            with open(filename, 'r') as file:
+                rows = file.readlines()[1:]
+
+                for row in rows:
+                    args = row.rstrip().split(',')
+                    if filename == "Rectangle.csv":
+                        obj = Rectangle(
+                            int(args[1]),
+                            int(args[2]),
+                            int(args[3]),
+                            int(args[4]),
+                            int(args[0])
+                        )
+                        objects.append(obj)
+                    elif filename == "Square.csv":
+                        obj = Square(
+                            int(args[1]),
+                            int(args[2]),
+                            int(args[3]),
+                            int(args[0])
+                        )
+                        objects.append(obj)
+        except FileNotFoundError:
+            return []
+        return objects
