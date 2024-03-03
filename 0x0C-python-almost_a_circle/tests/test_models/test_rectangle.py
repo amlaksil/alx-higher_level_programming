@@ -39,7 +39,7 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(r.height, 5)
         self.assertEqual(r.x, 0)
         self.assertEqual(r.y, 0)
-
+        
     def test_access_private_attrs(self):
         """Make sure all attributes are private """
         r = Rectangle(3, 5, 1, 0, 12)
@@ -81,6 +81,20 @@ class TestRectangleClass(unittest.TestCase):
         "Make sure error is raised if y is not integer """
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             r = Rectangle(3, 2, 4, "2")
+
+    def test_width_is_greater_than_zero(self):
+        """
+        Make sure error is raised if width not greater than zero.
+        """
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            r = Rectangle(0, 2)
+
+    def test_height_is_greater_than_zero(self):
+        """
+        Make sure error is raised if height not greater than zero.
+        """
+        with self.assertRaisesRegex(ValueError, 'height must be > 0'):
+            r = Rectangle(1, 0)
 
     def test_is_width_positive(self):
         """Make sure error is raised if width is less than zero """
@@ -231,7 +245,7 @@ class TestRectangleClass(unittest.TestCase):
             dict_ = r1.to_dictionary()
             print(dict_)
             self.assertEqual(out.getvalue(), dic_rep)
-
+    
     def test_pycodestyle(self):
         """Check PEP 8 style"""
         style = pycodestyle.StyleGuide(quiet=True)

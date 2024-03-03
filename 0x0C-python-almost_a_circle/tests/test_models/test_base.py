@@ -48,7 +48,7 @@ class TestBaseClass(unittest.TestCase):
         json_dictionary = r1.to_json_string(None)
         self.assertEqual(json_dictionary, '[]')
 
-    def test_save_to_file(self):
+    def test_Rectangle_save_to_file(self):
         """Check file """
         r1 = Rectangle(10, 7, 2, 8)
         dictionary_1 = r1.to_dictionary()
@@ -60,6 +60,69 @@ class TestBaseClass(unittest.TestCase):
         with open("Rectangle.json", "r") as f:
             dict_list_2 = json.loads(f.read())
         self.assertTrue(dict_list_1 == dict_list_2)
+
+    def test_Square_save_to_file(self):
+        """Check file """
+        s1 = Square(10, 7, 2, 2)
+        dictionary_1 = s1.to_dictionary()
+        s2 = Square(5, 4, 3, 3)
+        dictionary_2 = s2.to_dictionary()
+        dict_list_1 = [dictionary_1, dictionary_2]
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json", "r") as f:
+            dict_list_2 = json.loads(f.read())
+        self.assertTrue(dict_list_1 == dict_list_2)
+
+    def test_Rectangle_save_to_file_not_empty(self):
+        """Check file"""
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, '[{"x": 0, "y": 0, "id": 1, "height": 2, "width": 1}]')
+        
+    def test_Rectangle_save_to_file_none(self):
+        """Check file"""
+        r1 = Rectangle(10, 5)
+        Rectangle.save_to_file(None)
+        
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+            self.assertEqual(content, '[]')
+        
+    def test_Rectangle_save_to_file_empty(self):
+        """Check file"""
+        r1 = Rectangle(10, 5)
+        Rectangle.save_to_file(None)
+        
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, '[]')
+        
+    def test_Square_save_to_file_none(self):
+        """Check file"""
+        Square.save_to_file(None)
+        
+        with open("Square.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, '[]')
+
+    def test_Square_save_to_file_empty(self):
+        """Check file"""
+        Square.save_to_file([])
+        
+        with open("Square.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, '[]')
+
+    def test_Square_save_to_file_not_empty(self):
+        """Check file"""
+        Square.save_to_file([Square(1)])
+        
+        with open("Square.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, '[{"id": 1, "x": 0, "size": 1, "y": 0}]')
 
     def test_from_json_string(self):
         """Check a list of JSON string """

@@ -64,10 +64,12 @@ class TestSquareClass(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s1 = Square(0)
 
+    def test_size_is_positive(self):
+        """Make sure size is positive"""
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s1 = Square(-1)
 
-    def test_is_x_greater_than_orEqualto_zero(self):
+    def test_is_x_greater_than_or_equal_to_zero(self):
         """Make sure error is raised if x is not less than or equal to zero"""
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             s1 = Square(5, -2, 4)
