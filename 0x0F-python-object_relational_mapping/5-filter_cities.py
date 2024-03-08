@@ -30,6 +30,8 @@ def list_cities_of_the_state(username, password, db_name, stat_name):
         for city in row:
             print(city, end='')
             print(', ' if count != len(rows) else '\n', end='')
+    if len(rows) == 0:
+        print()
     cur.close()
     db.close()
 
