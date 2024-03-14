@@ -3,7 +3,6 @@
 This module contains a function find_peak which
 finds a peak element in a list of integers.
 """
-import sys
 
 
 def find_peak(list_of_integers):
