@@ -1,35 +1,32 @@
 #!/usr/bin/python3
 """
-This module consist of a function called 'find_peak' which finds
-the first peak element (is an element that is strictly greater that
-its neighbors) in the list.
+This module contains a function find_peak which
+finds a peak element in a list of integers.
 """
+import sys
 
 
 def find_peak(list_of_integers):
     """
-    Retuns the first peak element in the list.
+    Find a peak element in a list of integers using binary search.
 
     Args:
-        list_of_integers (list): list of unsorted integers
+        list_of_integers (list): A list of integers.
+
+    Returns:
+        int: The peak element in the list
     """
-    if list_of_integers == []:
+    if not list_of_integers:
         return None
 
-    length = len(list_of_integers)
-    mid = length // 2
-    li = list_of_integers
+    m = list_of_integers
+    peak = m[0]
 
-    if mid - 1 < 0 and mid + 1 >= length:
-        return li[mid]
-    elif mid - 1 < 0:
-        return li[mid] if li[mid] > li[mid + 1] else li[mid + 1]
-    elif mid + 1 >= length:
-        return li[mid] if li[mid] > li[mid - 1] else li[mid - 1]
-
-    if li[mid - 1] < li[mid] > li[mid + 1]:
-        return li[mid]
-
-    if li[mid + 1] > li[mid - 1]:
-        return find_peak(li[mid:])
-    return find_peak(li[:mid])
+    while len(m):
+        index = len(m) // 2
+        if m[index] > peak:
+            peak = m[index]
+            m = m[index:]
+        else:
+            m = m[:index]
+    return peak
